@@ -1,0 +1,267 @@
+
+
+Id                                               : 168512
+Number                                           : 41-411-7
+Name                                             : TechLab: Implement CI/CD End to End Deployment for Analytics
+SeriesId                                         : 32954
+OrganizationId                                   : 4250
+PlatformId                                       : 2
+EnableCodeLabFabric                              : False
+ParentId                                         : 
+ParentName                                       : 
+InheritEnvironment                               : False
+EnvironmentLabProfileId                          : 
+InheritContent                                   : False
+ContentLabProfileId                              : 
+MinInstanceStorageGb                             : 20
+DevelopmentStatusId                              : 10
+CurrentDevelopmentStatusId                       : 10
+DurationMinutes                                  : 6
+DurationUnit                                     : 10
+AllowTimeExtensions                              : True
+TimeExtensionMinutes                             : 15
+TimeExtensionShowNotificationMinutes             : 10
+Level                                            : 100
+EvaluationId                                     : 105
+AdvertisingCampaignId                            : 
+Description                                      : 
+Enabled                                          : True
+EnableBugReporting                               : False
+BugReportEmailAddress                            : 
+OwnerName                                        : 
+OwnerEmail                                       : 
+OverrideCloudPortalUrl                           : False
+CloudPortalUrl                                   : https://portal.azure.com
+AppendLabDataToCloudPortalUrl                    : False
+NetworksJson                                     : {@{Id=209562; Description=; Name=WebNAT; PhysicalNetworkAdapterName=; IsStudentVisible=False; DevelopmentOnly=False; Type=10; VLanId=; GatewayAddress=192.168.1.1; SubnetMask=255.255.255.0; EnableDhcp=True; DhcpStart=192.168.1.3; DhcpEnd=192.168.1.200; AddressPrefix=10.0.0.0/24; IsSharedClassNetwork=False; SubnetId=; AccessControlListId=; AccessControlListName=; CustomNetworkId=; CustomNetworkName=; EnableNat=False; EnableEndpoints=False; EndpointGatewayIpAddress=; EndpointGatewaySubnetMask=}}
+SharedClassNetworksJson                          : {}
+ContainerNetworksJson                            : {}
+HasVirtualMachinePool                            : False
+VirtualMachinesJson                              : {@{Id=398974; DisplayName=W-11 CL-1; ReplacementTokenAlias=W-11CL-1; AutoStart=True; InitialSystemTimeDate=; InitialSystemTimeTime=; WaitForHeartbeat=True; IsHostTimeSyncEnabled=True; IsStudentVisible=True; StartupDelaySeconds=; ResumeOrder=0; ResumeDelaySeconds=; AllowRevert=False; TrackLabInstanceData=True; AllowDesktopConnections=True; AllowSshConnections=False; FloppyMediaId=; DvdMediaId=; TargetResourceGroupId=; CloudOperatingSystemType=0; DiskType=0; UseCloudHybridBenefit=False; PlatformId=2; UseAzureMarketplaceImage=False; Username=LabAdmin; Password=Passw0rd!; RequiresPremiumCloudFeatures=False; ProfileName=W-11 CL-1; ProfileId=263246; HasDvdDrive=True; HasFloppyDrive=False; NetworkConnections=System.Object[]; Endpoints=System.Object[]}}
+VirtualMachinePoolJson                           : {}
+VirtualMachinePoolMembersJson                    : {}
+DefaultVirtualMachineProfileId                   : 263246
+DefaultVirtualMachineLabPoolProfileId            : 
+DefaultResourceId                                : 
+RemovableMediaJson                               : {}
+ContainerImagesJson                              : {}
+ContainerVolumesJson                             : {}
+CloudResourceGroupsJson                          : {@{Id=19270; DisplayName=RG1Dev; ReplacementTokenAlias=RG1Dev; LabProfileId=168512; EnableDatacenterOverride=False; AccessControlPolicies=System.Object[]; CloudQuotas=System.Object[]; DatacenterOverrideId=; CloudTemplateModels=System.Object[]; TemplateParameterValues=System.Object[]}, @{Id=19271; DisplayName=RG1Prod; ReplacementTokenAlias=RG1Prod; LabProfileId=168512; EnableDatacenterOverride=False; AccessControlPolicies=System.Object[]; CloudQuotas=System.Object[]; DatacenterOverrideId=; CloudTemplateModels=System.Object[]; TemplateParameterValues=System.Object[]}}
+CloudTemplateValuesJson                          : 
+CloudDatacenterAvailabilityJson                  : {@{DatacenterId=39; MaxLabInstances=}, @{DatacenterId=44; MaxLabInstances=}}
+CloudPortalCredentialProfilesJson                : {@{LocalId=1; ResourceGroupPermissionMappings=System.Object[]; SubscriptionPermissionMappings=System.Object[]; AccountNamePrefix=User1-; ReplacementTokenAlias=User1}}
+CloudSubscriptionInstancePoliciesJson            : {@{Id=3009; Description=; Enabled=True; IsGlobalPolicy=False; CloudPlatformId=10; Name=MS CSU DAI 300 CI/CD V2}}
+CloudScriptContextPoliciesJson                   : {}
+CloudSubscriptionInstanceQuotasJson              : {}
+CloudPlatform                                    : 10
+CloudPlatformListJson                            : {@{Key=10; Value=Azure}, @{Key=11; Value=AWS}, @{Key=12; Value=GCP}, @{Key=13; Value=Unknown}}
+CloudSecurityReviewEventHasOccurred              : False
+EnableAutomaticPortalLogin                       : False
+DeployDefaultResources                           : False
+CloudSubscriptionPoolId                          : 746
+CloudSubscriptionPoolName                        : CSU - DevOps Parallellism (UAT)
+CloudDeploymentFailureBehavior                   : 10
+EnableAzureTAP                                   : False
+OverrideScriptContext                            : False
+RunScriptAsAdmin                                 : False
+ExpectedCloudCost                                : 
+InheritPreinstancing                             : False
+EnablePreinstancing                              : False
+SavePreinstances                                 : True
+PreinstanceSaveDelaySeconds                      : 0
+PreinstanceBatchSize                             : 1
+PreinstanceStockLevel                            : 1
+PreinstanceDatacenterStockLevelsJson             : 
+EnableCloudCredentialAssignment                  : False
+PreinstanceScheduleJson                          : {}
+InheritLifeCycleActions                          : False
+LifeCycleActionsJson                             : {@{Id=92244; Name=Register Providers + Setup ; SortOrder=0; Event=0; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=#Register Compute so we can do cluster stuff
+                                                   Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+                                                   
+                                                   #This section gets me into databricks 
+                                                   #If you don't have it you can't login
+                                                   
+                                                   # Define variables
+                                                   $resourceGroupName = "RG1Dev"
+                                                   $workspaceName = "databricksdev@lab.LabInstance.Id"
+                                                   $userPrincipalName = "@lab.CloudPortalCredential(User1).Username"
+                                                   $roleName = "Contributor" # You can also use "Owner"
+                                                   
+                                                   # Get the Databricks workspace
+                                                   $Retries = 60
+                                                   $RetryCount = 0
+                                                   while ($RetryCount -lt $Retries)
+                                                   {
+                                                       $workspace = $(
+                                                           try {
+                                                               Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Databricks/workspaces" -ResourceName $workspaceName
+                                                           }
+                                                           catch {$CaughtError = $_}
+                                                       )
+                                                       if ($null -eq $workspace)
+                                                       {
+                                                           $RetryCount++
+                                                           Start-Sleep -Seconds 1
+                                                       }
+                                                       else {break}
+                                                   }
+                                                   If ($null -eq $workspace) {throw $CaughtError}
+                                                   
+                                                   # Get the user object ID
+                                                   $user = Get-AzADUser -UserPrincipalName $userPrincipalName
+                                                   
+                                                   # Assign the role
+                                                   New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionName $roleName -Scope $workspace.Id
+                                                   
+                                                   
+                                                   
+                                                   # Define variables
+                                                   $resourceGroupName = "RG1Prod"
+                                                   $workspaceName = "databricksprod@lab.LabInstance.Id"
+                                                   $userPrincipalName = "@lab.CloudPortalCredential(User1).Username"
+                                                   $roleName = "Contributor" # You can also use "Owner"
+                                                   
+                                                   # Get the Databricks workspace
+                                                   $Retries = 60
+                                                   $RetryCount = 0
+                                                   while ($RetryCount -lt $Retries)
+                                                   {
+                                                       $workspace = $(
+                                                           try {
+                                                               Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Databricks/workspaces" -ResourceName $workspaceName
+                                                           }
+                                                           catch {$CaughtError = $_}
+                                                       )
+                                                       if ($null -eq $workspace)
+                                                       {
+                                                           $RetryCount++
+                                                           Start-Sleep -Seconds 1
+                                                       }
+                                                       else {break}
+                                                   }
+                                                   If ($null -eq $workspace) {throw $CaughtError}
+                                                   
+                                                   # Get the user object ID
+                                                   $user = Get-AzADUser -UserPrincipalName $userPrincipalName
+                                                   
+                                                   # Assign the role
+                                                   New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionName $roleName -Scope $workspace.Id
+                                                   ; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=0; ErrorAction=20; CustomErrorNotification=; Enabled=False; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=92245; Name=Remove Resource Provider; SortOrder=0; Event=80; ActionType=40; Url=; AppendLabData=False; Synchronous=True; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=$resourceGroupName = "RG1Dev"
+                                                   $workspaceName = 'databricksdev@lab.LabInstance.Id'
+                                                   
+                                                   $workspace = Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Databricks/workspaces" -ResourceName $workspaceName
+                                                   Remove-AzResource -ResourceId $workspace.Id -Force
+                                                   
+                                                   $resourceGroupName = "RG1Prod"
+                                                   $workspaceName = 'databricksprod@lab.LabInstance.Id'
+                                                   
+                                                   $workspace = Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Databricks/workspaces" -ResourceName $workspaceName
+                                                   Remove-AzResource -ResourceId $workspace.Id -Force
+                                                   
+                                                   Unregister-AzResourceProvider -ProviderNamespace Microsoft.Compute; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=6; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=3; CopilotPromptJson=}, @{Id=92246; Name=KeyVault Config; SortOrder=1; Event=20; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=    # Define the Key Vault name and your user principal ID
+                                                       $keyVaultName = "devkeys@lab.LabInstance.Id"
+                                                       $userPrincipalId = (Get-AzADUser -UserPrincipalName "@lab.CloudPortalCredential(User1).Username").Id
+                                                   
+                                                       # Grant access to the Key Vault
+                                                       Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToSecrets set,delete,get,list
+                                                   
+                                                       $connectionString = (Get-AzStorageAccount -ResourceGroupName "RG1Dev" -Name "sadev@lab.LabInstance.Id").Context.ConnectionString
+                                                       
+                                                       $secretValue = ConvertTo-SecureString "$connectionString" -AsPlainText -Force
+                                                       Set-AzKeyVaultSecret -VaultName "devkeys@lab.LabInstance.Id" -Name "DevConnectionString" -SecretValue $secretValue
+                                                   
+                                                       #For Prod
+                                                       # Define the Key Vault name and your user principal ID
+                                                       $keyVaultName = "prodkeys@lab.LabInstance.Id"
+                                                       $userPrincipalId = (Get-AzADUser -UserPrincipalName "@lab.CloudPortalCredential(User1).Username").Id
+                                                   
+                                                       # Grant access to the Key Vault
+                                                       Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToSecrets set,delete,get,list
+                                                   
+                                                       $connectionString = (Get-AzStorageAccount -ResourceGroupName "RG1Prod" -Name "saprod@lab.LabInstance.Id").Context.ConnectionString
+                                                       
+                                                       $secretValue = ConvertTo-SecureString "$connectionString" -AsPlainText -Force
+                                                       Set-AzKeyVaultSecret -VaultName "prodkeys@lab.LabInstance.Id" -Name "ProdConnectionString" -SecretValue $secretValue; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=0; ErrorAction=20; CustomErrorNotification=; Enabled=False; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=3; CopilotPromptJson=}, @{Id=113086; Name=Register Provider; SortOrder=1; Event=0; ActionType=40; Url=; AppendLabData=False; Synchronous=True; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=Register-AzResourceProvider -ProviderNamespace Microsoft.Compute; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=0; ErrorAction=20; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}...}
+InheritTags                                      : True
+QuickTagsJson                                    : {}
+CustomTagsJson                                   : {}
+InheritStorageSettings                           : False
+DatacenterAvailability                           : {5}
+StorageLoadingPriority                           : 20
+LabHostTagsJson                                  : {}
+LabFabricBuildSequence                           : 10
+ThemeId                                          : 
+EnableDisplayDelay                               : False
+DisplayDelayValue                                : 
+DisplayDelayUnit                                 : 
+DisplayDelayMessage                              : 
+IntroductionContentUrl                           : 
+PreventIntroSkipping                             : False
+IntroductionContentMinimumDisplaySeconds         : 30
+EndUrl                                           : 
+ShowMaxActiveLabInstances                        : False
+MaxActiveLabInstances                            : 
+MaxAllowedBuildMinutes                           : 60
+MaxAllowedBuildTimeAction                        : 10
+ShowInstructionsWhileBuilding                    : False
+ShowTimer                                        : True
+EnableNavigationWarning                          : True
+ShowNavigationPane                               : True
+NavigationBarWidth                               : 400
+UseIntegratedBrowser                             : False
+IntegratedBrowserContainerImageId                : 
+IntegratedBrowserContainerImageName              : 
+ShowContentTab                                   : True
+ShowMachinesTab                                  : True
+ShowSupportTab                                   : True
+UseCustomContentTabLabel                         : False
+CustomContentTabLabel                            : 
+UseCustomMachinesTabLabel                        : False
+CustomMachinesTabLabel                           : 
+UseCustomSupportTabLabel                         : False
+CustomSupportTabLabel                            : 
+EnableCopyPaste                                  : True
+ShowVirtualMachinePowerOptions                   : True
+EnableInstanceLinkSharing                        : False
+AllowLabInstanceNaming                           : False
+AllowMultipleActiveInstancesPerUser              : True
+EnableScheduledDisablement                       : False
+ScheduledDisableDate                             : 
+ScheduledDisableTime                             : 
+PublishToOrganizationTemplateGallery             : False
+TemplateGalleryReuseContainersAndVirtualMachines : False
+TemplateGalleryLicenseAgreementId                : 
+EnableVirtualMachineInstanceEditing              : False
+EnableVncRecordingFeature                        : True
+SharedClassEnvironmentRole                       : 0
+AutoStartSharedClassEnvironment                  : False
+ClassEnvironmentLabProfileId                     : 
+AllowCancel                                      : True
+AllowSave                                        : False
+AllowDisconnect                                  : False
+EnableAutoSave                                   : False
+EnableLastConsoleSyncTimeout                     : False
+LastConsoleSyncTimeoutMinutes                    : 15
+EnableLastActivityTimeout                        : False
+LastActivityTimeoutMinutes                       : 60
+MinimumAutoSaveTimeInvestment                    : 0
+MaxSnapshots                                     : 0
+ExternalInstruction.Enabled                      : False
+LtiOutcomeScoringPolicy                          : 0
+LtiOutcomeScoringFormat                          : 0
+LtiOutcomePassingScoreMinutes                    : 15
+LtiOutcomePassingScoreTaskCompletePercentage     : 70
+AllowAnonymousLaunch                             : False
+AnonymousLaunchCode                              : 
+AnonymousLaunchExpiresChecked                    : False
+AnonymousLaunchExpiresDate                       : 
+AnonymousLaunchExpiresTime                       : 
+AllowAnonymousSave                               : False
+AnonymousSaveMaxDays                             : 7
+AnonymousSaveMaxSessions                         : 5
+AuthenticatedLaunchLinksJson                     : {@{AuthenticationProviderId=4; ExpiresDate=9/12/2025; ExpiresTime=12:00 AM}}
+CloudCredentialPoolAssignmentsJson               : {}
+ResourcesJson                                    : {}
+
+
+

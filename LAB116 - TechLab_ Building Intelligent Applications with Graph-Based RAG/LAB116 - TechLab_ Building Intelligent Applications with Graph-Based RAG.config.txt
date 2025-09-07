@@ -1,0 +1,211 @@
+
+
+Id                                               : 186397
+Number                                           : LAB116
+Name                                             : TechLab: Building Intelligent Applications with Graph-Based RAG
+SeriesId                                         : 36265
+OrganizationId                                   : 4250
+PlatformId                                       : 2
+EnableCodeLabFabric                              : False
+ParentId                                         : 
+ParentName                                       : 
+InheritEnvironment                               : False
+EnvironmentLabProfileId                          : 
+InheritContent                                   : False
+ContentLabProfileId                              : 
+MinInstanceStorageGb                             : 20
+DevelopmentStatusId                              : 10
+CurrentDevelopmentStatusId                       : 10
+DurationMinutes                                  : 90
+DurationUnit                                     : 0
+AllowTimeExtensions                              : True
+TimeExtensionMinutes                             : 15
+TimeExtensionShowNotificationMinutes             : 10
+Level                                            : 100
+EvaluationId                                     : 
+AdvertisingCampaignId                            : 
+Description                                      : 
+Enabled                                          : True
+EnableBugReporting                               : False
+BugReportEmailAddress                            : 
+OwnerName                                        : 
+OwnerEmail                                       : 
+OverrideCloudPortalUrl                           : False
+CloudPortalUrl                                   : https://portal.azure.com
+AppendLabDataToCloudPortalUrl                    : False
+NetworksJson                                     : {@{Id=244277; Description=; Name=Internet; PhysicalNetworkAdapterName=; IsStudentVisible=False; DevelopmentOnly=False; Type=10; VLanId=; GatewayAddress=192.168.1.1; SubnetMask=255.255.255.0; EnableDhcp=True; DhcpStart=192.168.1.100; DhcpEnd=192.168.1.200; AddressPrefix=10.0.0.0/24; IsSharedClassNetwork=False; SubnetId=; AccessControlListId=; AccessControlListName=; CustomNetworkId=; CustomNetworkName=; EnableNat=False; EnableEndpoints=False; EndpointGatewayIpAddress=; EndpointGatewaySubnetMask=}}
+SharedClassNetworksJson                          : {}
+ContainerNetworksJson                            : {}
+HasVirtualMachinePool                            : False
+VirtualMachinesJson                              : {@{Id=454268; DisplayName=Win11-Pro-Base-VM; ReplacementTokenAlias=Win11-Pro-Base-VM; AutoStart=True; InitialSystemTimeDate=; InitialSystemTimeTime=; WaitForHeartbeat=True; IsHostTimeSyncEnabled=True; IsStudentVisible=True; StartupDelaySeconds=; ResumeOrder=0; ResumeDelaySeconds=; AllowRevert=False; TrackLabInstanceData=False; AllowDesktopConnections=True; AllowSshConnections=False; FloppyMediaId=; DvdMediaId=; TargetResourceGroupId=; CloudOperatingSystemType=0; DiskType=0; UseCloudHybridBenefit=False; PlatformId=2; UseAzureMarketplaceImage=False; Username=LabUser; Password=Pa$$w0rd; RequiresPremiumCloudFeatures=False; ProfileName=Win11-Pro-Base-VM (LAB106) (COPY); ProfileId=303145; HasDvdDrive=True; HasFloppyDrive=False; NetworkConnections=System.Object[]; Endpoints=System.Object[]}}
+VirtualMachinePoolJson                           : {}
+VirtualMachinePoolMembersJson                    : {}
+DefaultVirtualMachineProfileId                   : 303145
+DefaultVirtualMachineLabPoolProfileId            : 
+DefaultResourceId                                : 
+RemovableMediaJson                               : {}
+ContainerImagesJson                              : {}
+ContainerVolumesJson                             : {}
+CloudResourceGroupsJson                          : {@{Id=23250; DisplayName=ResourceGroup1; ReplacementTokenAlias=ResourceGroup1; LabProfileId=186397; EnableDatacenterOverride=False; AccessControlPolicies=System.Object[]; CloudQuotas=System.Object[]; DatacenterOverrideId=; CloudTemplateModels=System.Object[]; TemplateParameterValues=System.Object[]}}
+CloudTemplateValuesJson                          : 
+CloudDatacenterAvailabilityJson                  : {@{DatacenterId=39; MaxLabInstances=}, @{DatacenterId=40; MaxLabInstances=}, @{DatacenterId=41; MaxLabInstances=}, @{DatacenterId=49; MaxLabInstances=}...}
+CloudPortalCredentialProfilesJson                : {@{LocalId=1; ResourceGroupPermissionMappings=System.Object[]; SubscriptionPermissionMappings=System.Object[]; AccountNamePrefix=User1-; ReplacementTokenAlias=User1}}
+CloudSubscriptionInstancePoliciesJson            : {@{Id=3564; Description=; Enabled=True; IsGlobalPolicy=False; CloudPlatformId=10; Name=TechConnect LAB116 ACP V2}}
+CloudScriptContextPoliciesJson                   : {}
+CloudSubscriptionInstanceQuotasJson              : {}
+CloudPlatform                                    : 10
+CloudPlatformListJson                            : {@{Key=10; Value=Azure}, @{Key=11; Value=AWS}, @{Key=12; Value=GCP}, @{Key=13; Value=Unknown}}
+CloudSecurityReviewEventHasOccurred              : False
+EnableAutomaticPortalLogin                       : False
+DeployDefaultResources                           : False
+CloudSubscriptionPoolId                          : 786
+CloudSubscriptionPoolName                        : LAB426 Recycling CSS Pool
+CloudDeploymentFailureBehavior                   : 10
+EnableAzureTAP                                   : False
+OverrideScriptContext                            : False
+RunScriptAsAdmin                                 : False
+ExpectedCloudCost                                : 
+InheritPreinstancing                             : False
+EnablePreinstancing                              : False
+SavePreinstances                                 : False
+PreinstanceSaveDelaySeconds                      : 0
+PreinstanceBatchSize                             : 1
+PreinstanceStockLevel                            : 0
+PreinstanceDatacenterStockLevelsJson             : 
+EnableCloudCredentialAssignment                  : False
+PreinstanceScheduleJson                          : {}
+InheritLifeCycleActions                          : False
+LifeCycleActionsJson                             : {@{Id=115186; Name=Disable Windows Update; SortOrder=0; Event=20; ActionType=50; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=#Disable automatic Windows updates
+                                                   
+                                                   # Disable Windows Update Service (wuauserv)
+                                                   Stop-Service -Name "wuauserv"
+                                                   Set-Service -Name "wuauserv" -StartupType Disabled
+                                                   
+                                                   ; ScriptDescription=This script will disable the automatic Windows updates. Disable this LCA if updates are needed.; ScriptGuidance=Will launch automatically.; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=5; Delay=10; ErrorAction=20; CustomErrorNotification=; Enabled=False; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=115187; Name=Purge AI Resources; SortOrder=0; Event=80; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=300; Subject=; Notification=; Script=# Query for all OpenAI deployment accounts in the subscription or resource group, depending on the context scope.
+                                                   $AIObjs = Get-AzResource -ResourceType "Microsoft.CognitiveServices/accounts"
+                                                   
+                                                   # Get the model deployments for each OpenAI account and store them in an array
+                                                   
+                                                   $AIObjArray = @()
+                                                   foreach ($AIobj in $AIObjs) {
+                                                       $AIObjArray += Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $AIobj.ResourceGroupName -AccountName $AIobj.Name
+                                                   }
+                                                   
+                                                   #Loop through each model deployment and delete it
+                                                   foreach ($Deployment in $AIObjArray) {
+                                                       Remove-AzCognitiveServicesAccountDeployment -ResourceId $deployment.Id -Force    
+                                                   }
+                                                   
+                                                   
+                                                   # Loop through each Open AI deployment account and delete it
+                                                   foreach ($account in $AIObjs) {
+                                                       Remove-AzResource -ResourceId $account.ResourceId -Force
+                                                       Write-Output "Deleted OpenAI deployment: $($account.Name)"
+                                                   }
+                                                    ; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=21; Delay=0; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=1; CopilotPromptJson=}, @{Id=115188; Name=Purge OpenAI Resources; SortOrder=0; Event=0; ActionType=40; Url=; AppendLabData=False; Synchronous=True; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=# Query for all OpenAI deployment accounts in the subscription or resource group, depending on the context scope.
+                                                   $AIObjs = Get-AzResource -ResourceType "Microsoft.CognitiveServices/accounts"
+                                                   
+                                                   # Get the model deployments for each OpenAI account and store them in an array
+                                                   
+                                                   $AIObjArray = @()
+                                                   foreach ($AIobj in $AIObjs) {
+                                                       $AIObjArray += Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $AIobj.ResourceGroupName -AccountName $AIobj.Name
+                                                   }
+                                                   
+                                                   #Loop through each model deployment and delete it
+                                                   foreach ($Deployment in $AIObjArray) {
+                                                       Remove-AzCognitiveServicesAccountDeployment -ResourceId $deployment.Id -Force    
+                                                   }
+                                                   
+                                                   
+                                                   # Loop through each Open AI deployment account and delete it
+                                                   foreach ($account in $AIObjs) {
+                                                       Remove-AzResource -ResourceId $account.ResourceId -Force
+                                                       Write-Output "Deleted OpenAI deployment: $($account.Name)"
+                                                   }; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=21; Delay=2; ErrorAction=10; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=115189; Name=Git Clone; SortOrder=1; Event=20; ActionType=30; Url=; AppendLabData=False; Synchronous=True; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=cd C:\Users\LabUser\Downloads
+                                                   mkdir mslearn-pg-ai
+                                                   start-job -name gitClone -ScriptBlock {git clone "https://github.com/Azure-Samples/mslearn-pg-ai" 'C:\Users\LabUser\Downloads\mslearn-pg-ai'}
+                                                   wait-job -name gitClone; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=303145; ScriptEngineImageId=; Delay=20; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=2; CopilotPromptJson=}...}
+InheritTags                                      : True
+QuickTagsJson                                    : {}
+CustomTagsJson                                   : {}
+InheritStorageSettings                           : True
+DatacenterAvailability                           : {128, 5, 130, 8}
+StorageLoadingPriority                           : 20
+LabHostTagsJson                                  : {}
+LabFabricBuildSequence                           : 0
+ThemeId                                          : 
+EnableDisplayDelay                               : False
+DisplayDelayValue                                : 
+DisplayDelayUnit                                 : 
+DisplayDelayMessage                              : 
+IntroductionContentUrl                           : 
+PreventIntroSkipping                             : False
+IntroductionContentMinimumDisplaySeconds         : 30
+EndUrl                                           : 
+ShowMaxActiveLabInstances                        : False
+MaxActiveLabInstances                            : 
+MaxAllowedBuildMinutes                           : 60
+MaxAllowedBuildTimeAction                        : 10
+ShowInstructionsWhileBuilding                    : False
+ShowTimer                                        : True
+EnableNavigationWarning                          : True
+ShowNavigationPane                               : True
+NavigationBarWidth                               : 400
+UseIntegratedBrowser                             : False
+IntegratedBrowserContainerImageId                : 
+IntegratedBrowserContainerImageName              : 
+ShowContentTab                                   : True
+ShowMachinesTab                                  : True
+ShowSupportTab                                   : True
+UseCustomContentTabLabel                         : False
+CustomContentTabLabel                            : 
+UseCustomMachinesTabLabel                        : False
+CustomMachinesTabLabel                           : 
+UseCustomSupportTabLabel                         : False
+CustomSupportTabLabel                            : 
+EnableCopyPaste                                  : True
+ShowVirtualMachinePowerOptions                   : True
+EnableInstanceLinkSharing                        : False
+AllowLabInstanceNaming                           : False
+AllowMultipleActiveInstancesPerUser              : False
+EnableScheduledDisablement                       : False
+ScheduledDisableDate                             : 
+ScheduledDisableTime                             : 
+PublishToOrganizationTemplateGallery             : False
+TemplateGalleryReuseContainersAndVirtualMachines : False
+TemplateGalleryLicenseAgreementId                : 
+EnableVirtualMachineInstanceEditing              : False
+EnableVncRecordingFeature                        : True
+SharedClassEnvironmentRole                       : 0
+AutoStartSharedClassEnvironment                  : False
+ClassEnvironmentLabProfileId                     : 
+AllowCancel                                      : True
+AllowSave                                        : False
+AllowDisconnect                                  : False
+EnableAutoSave                                   : False
+EnableLastConsoleSyncTimeout                     : True
+LastConsoleSyncTimeoutMinutes                    : 480
+EnableLastActivityTimeout                        : True
+LastActivityTimeoutMinutes                       : 480
+MinimumAutoSaveTimeInvestment                    : 5
+MaxSnapshots                                     : 0
+ExternalInstruction.Enabled                      : False
+LtiOutcomeScoringPolicy                          : 0
+LtiOutcomeScoringFormat                          : 0
+LtiOutcomePassingScoreMinutes                    : 15
+LtiOutcomePassingScoreTaskCompletePercentage     : 70
+AllowAnonymousLaunch                             : False
+AnonymousLaunchCode                              : 
+AnonymousLaunchExpiresChecked                    : False
+AnonymousLaunchExpiresDate                       : 
+AnonymousLaunchExpiresTime                       : 
+AllowAnonymousSave                               : False
+AnonymousSaveMaxDays                             : 7
+AnonymousSaveMaxSessions                         : 5
+AuthenticatedLaunchLinksJson                     : {}
+CloudCredentialPoolAssignmentsJson               : {}
+ResourcesJson                                    : {}
+
+
+

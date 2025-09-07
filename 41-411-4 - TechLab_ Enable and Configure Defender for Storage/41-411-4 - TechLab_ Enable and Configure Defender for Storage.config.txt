@@ -1,0 +1,199 @@
+
+
+Id                                               : 174317
+Number                                           : 41-411-4
+Name                                             : TechLab: Enable and Configure Defender for Storage
+SeriesId                                         : 34036
+OrganizationId                                   : 4250
+PlatformId                                       : 2
+EnableCodeLabFabric                              : False
+ParentId                                         : 
+ParentName                                       : 
+InheritEnvironment                               : False
+EnvironmentLabProfileId                          : 
+InheritContent                                   : False
+ContentLabProfileId                              : 
+MinInstanceStorageGb                             : 20
+DevelopmentStatusId                              : 10
+CurrentDevelopmentStatusId                       : 10
+DurationMinutes                                  : 2
+DurationUnit                                     : 10
+AllowTimeExtensions                              : True
+TimeExtensionMinutes                             : 15
+TimeExtensionShowNotificationMinutes             : 10
+Level                                            : 100
+EvaluationId                                     : 
+AdvertisingCampaignId                            : 
+Description                                      : 
+Enabled                                          : True
+EnableBugReporting                               : False
+BugReportEmailAddress                            : 
+OwnerName                                        : 
+OwnerEmail                                       : 
+OverrideCloudPortalUrl                           : False
+CloudPortalUrl                                   : https://portal.azure.com
+AppendLabDataToCloudPortalUrl                    : False
+NetworksJson                                     : {@{Id=223862; Description=; Name=WebNAT; PhysicalNetworkAdapterName=; IsStudentVisible=False; DevelopmentOnly=False; Type=10; VLanId=; GatewayAddress=192.168.1.1; SubnetMask=255.255.255.0; EnableDhcp=True; DhcpStart=192.168.1.100; DhcpEnd=192.168.1.200; AddressPrefix=10.0.0.0/24; IsSharedClassNetwork=False; SubnetId=; AccessControlListId=; AccessControlListName=; CustomNetworkId=; CustomNetworkName=; EnableNat=False; EnableEndpoints=False; EndpointGatewayIpAddress=; EndpointGatewaySubnetMask=}}
+SharedClassNetworksJson                          : {}
+ContainerNetworksJson                            : {}
+HasVirtualMachinePool                            : False
+VirtualMachinesJson                              : {@{Id=418985; DisplayName=W-11 CL-1; ReplacementTokenAlias=W-11CL-1; AutoStart=True; InitialSystemTimeDate=; InitialSystemTimeTime=; WaitForHeartbeat=True; IsHostTimeSyncEnabled=True; IsStudentVisible=True; StartupDelaySeconds=; ResumeOrder=0; ResumeDelaySeconds=; AllowRevert=False; TrackLabInstanceData=False; AllowDesktopConnections=True; AllowSshConnections=False; FloppyMediaId=; DvdMediaId=; TargetResourceGroupId=; CloudOperatingSystemType=0; DiskType=0; UseCloudHybridBenefit=False; PlatformId=2; UseAzureMarketplaceImage=False; Username=LabAdmin; Password=Passw0rd!; RequiresPremiumCloudFeatures=False; ProfileName=W-11 CL-1; ProfileId=277669; HasDvdDrive=True; HasFloppyDrive=False; NetworkConnections=System.Object[]; Endpoints=System.Object[]}}
+VirtualMachinePoolJson                           : {}
+VirtualMachinePoolMembersJson                    : {}
+DefaultVirtualMachineProfileId                   : 277669
+DefaultVirtualMachineLabPoolProfileId            : 
+DefaultResourceId                                : 
+RemovableMediaJson                               : {}
+ContainerImagesJson                              : {}
+ContainerVolumesJson                             : {}
+CloudResourceGroupsJson                          : {@{Id=20394; DisplayName=RG1; ReplacementTokenAlias=RG1; LabProfileId=174317; EnableDatacenterOverride=False; AccessControlPolicies=System.Object[]; CloudQuotas=System.Object[]; DatacenterOverrideId=; CloudTemplateModels=System.Object[]; TemplateParameterValues=System.Object[]}}
+CloudTemplateValuesJson                          : 
+CloudDatacenterAvailabilityJson                  : {@{DatacenterId=39; MaxLabInstances=}, @{DatacenterId=40; MaxLabInstances=}}
+CloudPortalCredentialProfilesJson                : {@{LocalId=1; ResourceGroupPermissionMappings=System.Object[]; SubscriptionPermissionMappings=System.Object[]; AccountNamePrefix=User1-; ReplacementTokenAlias=User1}}
+CloudSubscriptionInstancePoliciesJson            : {@{Id=3014; Description=Initial ACP for 41-411-4 Microsoft Defender for Storage; Enabled=True; IsGlobalPolicy=False; CloudPlatformId=10; Name=41-411-4 lab 2 (Storage) (RG specific)}}
+CloudScriptContextPoliciesJson                   : {}
+CloudSubscriptionInstanceQuotasJson              : {}
+CloudPlatform                                    : 10
+CloudPlatformListJson                            : {@{Key=10; Value=Azure}, @{Key=11; Value=AWS}, @{Key=12; Value=GCP}, @{Key=13; Value=Unknown}}
+CloudSecurityReviewEventHasOccurred              : False
+EnableAutomaticPortalLogin                       : False
+DeployDefaultResources                           : False
+CloudSubscriptionPoolId                          : 543
+CloudSubscriptionPoolName                        : Microsoft CSU CSS - Recycling (Prod)
+CloudDeploymentFailureBehavior                   : 10
+EnableAzureTAP                                   : False
+OverrideScriptContext                            : False
+RunScriptAsAdmin                                 : False
+ExpectedCloudCost                                : 
+InheritPreinstancing                             : False
+EnablePreinstancing                              : False
+SavePreinstances                                 : True
+PreinstanceSaveDelaySeconds                      : 0
+PreinstanceBatchSize                             : 1
+PreinstanceStockLevel                            : 0
+PreinstanceDatacenterStockLevelsJson             : 
+EnableCloudCredentialAssignment                  : False
+PreinstanceScheduleJson                          : {}
+InheritLifeCycleActions                          : False
+LifeCycleActionsJson                             : {@{Id=99505; Name=Disable WAM; SortOrder=0; Event=20; ActionType=30; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=# Set script variables
+                                                   $tnnt = '@lab.CloudSubscription.TenantId'
+                                                   $subs = '@lab.CloudSubscription.Id'
+                                                   $user = '@lab.CloudPortalCredential(User1).Username'
+                                                   $pass = '@lab.CloudPortalCredential(User1).Password'
+                                                   
+                                                   $pswd = ConvertTo-SecureString $pass -AsPlainText -Force
+                                                   $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $pswd
+                                                   
+                                                   # Connect to Azure
+                                                   $context = Connect-AzAccount -Credential $cred -SubscriptionId $subs -TenantId $tnnt
+                                                   # Disable WAM
+                                                   if (Get-AzConfig | Where-Object {$_.Key -eq "EnableLoginByWam"}) {
+                                                       $disWAM = Update-AzConfig -EnableLoginByWam $false
+                                                       $disCon = Disconnect-AzAccount
+                                                       $context = Connect-AzAccount -Credential $cred -SubscriptionId $subs -TenantId $tnnt
+                                                   }; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=277669; ScriptEngineImageId=; Delay=0; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=99506; Name=Activate Microsoft Security; SortOrder=0; Event=10; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'
+                                                   Start-Sleep -s 30
+                                                   
+                                                   do {
+                                                       $Providers = Get-AzResourceProvider -ProviderNamespace 'Microsoft.Security'
+                                                       Start-Sleep -s 10
+                                                   } until($Providers.RegistrationState -eq 'Registered'); ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=0; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=110937; Name=Remove Sentinel Rules on Teardown; SortOrder=0; Event=80; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=$resourceGroups = Get-AzResourceGroup
+                                                   
+                                                   foreach ($resourceGroup in $resourceGroups) {
+                                                       $workspaces = Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup.ResourceGroupName
+                                                       foreach ($workspace in $workspaces) {
+                                                           $rules = Get-AzSentinelAlertRule -ResourceGroupName $resourceGroup.ResourceGroupName -WorkspaceName $workspace.Name
+                                                           foreach ($rule in $rules) {
+                                                               Remove-AzSentinelAlertRule -ResourceGroupName $resourceGroup.ResourceGroupName -RuleId $rule.name -WorkspaceName $workspace.Name
+                                                           }
+                                                       }
+                                                   }; ScriptDescription=Script that looks for and removes any Sentinel Alert Rules at 'Tearing Down' before the platform tears down the Sentinel Workspaces and Resource Groups their associated with, orphaning the rules.; ScriptGuidance=Just toss it into a CSS/CSR Lab Profile as a 'Tearing Down' event LCA.; ScriptSource=137; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=21; Delay=0; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=99507; Name=Activate Microsoft Insights; SortOrder=1; Event=10; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=Register-AzResourceProvider -ProviderNamespace 'Microsoft.Insights'
+                                                   Start-Sleep -s 30
+                                                   
+                                                   do {
+                                                       $Providers = Get-AzResourceProvider -ProviderNamespace 'Microsoft.Insights'
+                                                       Start-Sleep -s 10
+                                                   } until($Providers.RegistrationState -eq 'Registered'); ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=0; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}}
+InheritTags                                      : True
+QuickTagsJson                                    : {}
+CustomTagsJson                                   : {}
+InheritStorageSettings                           : True
+DatacenterAvailability                           : {128, 5, 130, 8}
+StorageLoadingPriority                           : 20
+LabHostTagsJson                                  : {}
+LabFabricBuildSequence                           : 0
+ThemeId                                          : 
+EnableDisplayDelay                               : False
+DisplayDelayValue                                : 
+DisplayDelayUnit                                 : 
+DisplayDelayMessage                              : 
+IntroductionContentUrl                           : 
+PreventIntroSkipping                             : False
+IntroductionContentMinimumDisplaySeconds         : 30
+EndUrl                                           : 
+ShowMaxActiveLabInstances                        : False
+MaxActiveLabInstances                            : 
+MaxAllowedBuildMinutes                           : 60
+MaxAllowedBuildTimeAction                        : 10
+ShowInstructionsWhileBuilding                    : False
+ShowTimer                                        : True
+EnableNavigationWarning                          : True
+ShowNavigationPane                               : True
+NavigationBarWidth                               : 400
+UseIntegratedBrowser                             : False
+IntegratedBrowserContainerImageId                : 
+IntegratedBrowserContainerImageName              : 
+ShowContentTab                                   : True
+ShowMachinesTab                                  : True
+ShowSupportTab                                   : True
+UseCustomContentTabLabel                         : False
+CustomContentTabLabel                            : 
+UseCustomMachinesTabLabel                        : False
+CustomMachinesTabLabel                           : 
+UseCustomSupportTabLabel                         : False
+CustomSupportTabLabel                            : 
+EnableCopyPaste                                  : True
+ShowVirtualMachinePowerOptions                   : True
+EnableInstanceLinkSharing                        : False
+AllowLabInstanceNaming                           : False
+AllowMultipleActiveInstancesPerUser              : False
+EnableScheduledDisablement                       : False
+ScheduledDisableDate                             : 
+ScheduledDisableTime                             : 
+PublishToOrganizationTemplateGallery             : False
+TemplateGalleryReuseContainersAndVirtualMachines : False
+TemplateGalleryLicenseAgreementId                : 
+EnableVirtualMachineInstanceEditing              : False
+EnableVncRecordingFeature                        : True
+SharedClassEnvironmentRole                       : 0
+AutoStartSharedClassEnvironment                  : False
+ClassEnvironmentLabProfileId                     : 
+AllowCancel                                      : True
+AllowSave                                        : False
+AllowDisconnect                                  : False
+EnableAutoSave                                   : False
+EnableLastConsoleSyncTimeout                     : True
+LastConsoleSyncTimeoutMinutes                    : 15
+EnableLastActivityTimeout                        : True
+LastActivityTimeoutMinutes                       : 9000
+MinimumAutoSaveTimeInvestment                    : 5
+MaxSnapshots                                     : 0
+ExternalInstruction.Enabled                      : False
+LtiOutcomeScoringPolicy                          : 0
+LtiOutcomeScoringFormat                          : 0
+LtiOutcomePassingScoreMinutes                    : 15
+LtiOutcomePassingScoreTaskCompletePercentage     : 70
+AllowAnonymousLaunch                             : False
+AnonymousLaunchCode                              : 
+AnonymousLaunchExpiresChecked                    : False
+AnonymousLaunchExpiresDate                       : 
+AnonymousLaunchExpiresTime                       : 
+AllowAnonymousSave                               : False
+AnonymousSaveMaxDays                             : 7
+AnonymousSaveMaxSessions                         : 5
+AuthenticatedLaunchLinksJson                     : {}
+CloudCredentialPoolAssignmentsJson               : {}
+ResourcesJson                                    : {}
+
+
+

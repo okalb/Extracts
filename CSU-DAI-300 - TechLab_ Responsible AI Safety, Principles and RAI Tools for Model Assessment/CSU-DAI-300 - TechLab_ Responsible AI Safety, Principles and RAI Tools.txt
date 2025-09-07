@@ -1,0 +1,191 @@
+
+
+Id                                               : 186396
+Number                                           : CSU-DAI-300
+Name                                             : TechLab: Responsible AI Safety, Principles and RAI Tools for Model Assessment
+SeriesId                                         : 36264
+OrganizationId                                   : 4250
+PlatformId                                       : 2
+EnableCodeLabFabric                              : False
+ParentId                                         : 
+ParentName                                       : 
+InheritEnvironment                               : False
+EnvironmentLabProfileId                          : 
+InheritContent                                   : False
+ContentLabProfileId                              : 
+MinInstanceStorageGb                             : 20
+DevelopmentStatusId                              : 10
+CurrentDevelopmentStatusId                       : 10
+DurationMinutes                                  : 90
+DurationUnit                                     : 0
+AllowTimeExtensions                              : True
+TimeExtensionMinutes                             : 15
+TimeExtensionShowNotificationMinutes             : 10
+Level                                            : 100
+EvaluationId                                     : 
+AdvertisingCampaignId                            : 
+Description                                      : 
+Enabled                                          : True
+EnableBugReporting                               : False
+BugReportEmailAddress                            : 
+OwnerName                                        : 
+OwnerEmail                                       : 
+OverrideCloudPortalUrl                           : False
+CloudPortalUrl                                   : https://portal.azure.com
+AppendLabDataToCloudPortalUrl                    : False
+NetworksJson                                     : {@{Id=244276; Description=; Name=Internet; PhysicalNetworkAdapterName=; IsStudentVisible=False; DevelopmentOnly=False; Type=10; VLanId=; GatewayAddress=192.168.1.1; SubnetMask=255.255.255.0; EnableDhcp=True; DhcpStart=192.168.1.100; DhcpEnd=192.168.1.200; AddressPrefix=10.0.0.0/24; IsSharedClassNetwork=False; SubnetId=; AccessControlListId=; AccessControlListName=; CustomNetworkId=; CustomNetworkName=; EnableNat=False; EnableEndpoints=False; EndpointGatewayIpAddress=; EndpointGatewaySubnetMask=}}
+SharedClassNetworksJson                          : {}
+ContainerNetworksJson                            : {}
+HasVirtualMachinePool                            : False
+VirtualMachinesJson                              : {@{Id=454267; DisplayName=Win11-Pro-Base; ReplacementTokenAlias=Win11-Pro-Base; AutoStart=True; InitialSystemTimeDate=; InitialSystemTimeTime=; WaitForHeartbeat=True; IsHostTimeSyncEnabled=True; IsStudentVisible=True; StartupDelaySeconds=; ResumeOrder=0; ResumeDelaySeconds=; AllowRevert=False; TrackLabInstanceData=False; AllowDesktopConnections=True; AllowSshConnections=False; FloppyMediaId=; DvdMediaId=; TargetResourceGroupId=; CloudOperatingSystemType=0; DiskType=0; UseCloudHybridBenefit=False; PlatformId=2; UseAzureMarketplaceImage=False; Username=LabUser; Password=Pa$$w0rd; RequiresPremiumCloudFeatures=False; ProfileName=Win11-Pro-Base (COPY); ProfileId=303144; HasDvdDrive=True; HasFloppyDrive=False; NetworkConnections=System.Object[]; Endpoints=System.Object[]}}
+VirtualMachinePoolJson                           : {}
+VirtualMachinePoolMembersJson                    : {}
+DefaultVirtualMachineProfileId                   : 303144
+DefaultVirtualMachineLabPoolProfileId            : 
+DefaultResourceId                                : 
+RemovableMediaJson                               : {}
+ContainerImagesJson                              : {}
+ContainerVolumesJson                             : {}
+CloudResourceGroupsJson                          : {@{Id=23249; DisplayName=ResourceGroup1; ReplacementTokenAlias=ResourceGroup1; LabProfileId=186396; EnableDatacenterOverride=False; AccessControlPolicies=System.Object[]; CloudQuotas=System.Object[]; DatacenterOverrideId=; CloudTemplateModels=System.Object[]; TemplateParameterValues=System.Object[]}}
+CloudTemplateValuesJson                          : 
+CloudDatacenterAvailabilityJson                  : {@{DatacenterId=38; MaxLabInstances=}, @{DatacenterId=39; MaxLabInstances=}, @{DatacenterId=40; MaxLabInstances=}, @{DatacenterId=41; MaxLabInstances=}...}
+CloudPortalCredentialProfilesJson                : {@{LocalId=1; ResourceGroupPermissionMappings=System.Object[]; SubscriptionPermissionMappings=System.Object[]; AccountNamePrefix=User1-; ReplacementTokenAlias=User1}}
+CloudSubscriptionInstancePoliciesJson            : {@{Id=3845; Description=; Enabled=True; IsGlobalPolicy=False; CloudPlatformId=10; Name=LAB112}}
+CloudScriptContextPoliciesJson                   : {}
+CloudSubscriptionInstanceQuotasJson              : {}
+CloudPlatform                                    : 10
+CloudPlatformListJson                            : {@{Key=10; Value=Azure}, @{Key=11; Value=AWS}, @{Key=12; Value=GCP}, @{Key=13; Value=Unknown}}
+CloudSecurityReviewEventHasOccurred              : False
+EnableAutomaticPortalLogin                       : False
+DeployDefaultResources                           : False
+CloudSubscriptionPoolId                          : 656
+CloudSubscriptionPoolName                        : Microsoft Event Subscription (CSS)
+CloudDeploymentFailureBehavior                   : 10
+EnableAzureTAP                                   : False
+OverrideScriptContext                            : False
+RunScriptAsAdmin                                 : False
+ExpectedCloudCost                                : 
+InheritPreinstancing                             : False
+EnablePreinstancing                              : False
+SavePreinstances                                 : True
+PreinstanceSaveDelaySeconds                      : 0
+PreinstanceBatchSize                             : 1
+PreinstanceStockLevel                            : 0
+PreinstanceDatacenterStockLevelsJson             : 
+EnableCloudCredentialAssignment                  : False
+PreinstanceScheduleJson                          : {}
+InheritLifeCycleActions                          : False
+LifeCycleActionsJson                             : {@{Id=115184; Name=Purge AI Resources; SortOrder=0; Event=80; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=300; Subject=; Notification=; Script=# Query for all OpenAI deployment accounts in the subscription or resource group, depending on the context scope.
+                                                   $AIObjs = Get-AzResource -ResourceType "Microsoft.CognitiveServices/accounts"
+                                                   
+                                                   # Get the model deployments for each OpenAI account and store them in an array
+                                                   
+                                                   $AIObjArray = @()
+                                                   foreach ($AIobj in $AIObjs) {
+                                                       $AIObjArray += Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $AIobj.ResourceGroupName -AccountName $AIobj.Name
+                                                   }
+                                                   
+                                                   #Loop through each model deployment and delete it
+                                                   foreach ($Deployment in $AIObjArray) {
+                                                       Remove-AzCognitiveServicesAccountDeployment -ResourceId $deployment.Id -Force    
+                                                   }
+                                                   
+                                                   
+                                                   # Loop through each Open AI deployment account and delete it
+                                                   foreach ($account in $AIObjs) {
+                                                       Remove-AzResource -ResourceId $account.ResourceId -Force
+                                                       Write-Output "Deleted OpenAI deployment: $($account.Name)"
+                                                   }
+                                                    ; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=8; Delay=0; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=1; CopilotPromptJson=}, @{Id=115185; Name=Register Resource Provider; SortOrder=0; Event=0; ActionType=40; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=600; Subject=; Notification=; Script=$resourceProviders = @('Microsoft.AlertsManagement', 'Microsoft.CognitiveServices', 'Microsoft.OperationalInsights')
+                                                   
+                                                   foreach ($provider in $resourceProviders) {
+                                                       Register-AzResourceProvider -ProviderNamespace $provider
+                                                   }; ScriptDescription=Use this to pre-register any Azure resource providers on your CSS lab; ScriptGuidance=Add this script at either the Pre-Build or Post Build stage. Replace <provider name> with the required Resource Provider name. Remove any unused spaces or add additional ones using the same format.; ScriptSource=106; ScriptLanguage=0; ScriptTargetId=; ScriptEngineImageId=21; Delay=0; ErrorAction=20; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}, @{Id=118522; Name=Windows Time Sync; SortOrder=0; Event=20; ActionType=30; Url=; AppendLabData=False; Synchronous=False; HttpVerb=0; HttpContent=; HttpHeaders=; Timeout=300; Subject=; Notification=; Script=sc.exe triggerinfo w32time delete
+                                                   sc.exe config w32time start=auto
+                                                   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Config" -Name "MaxNegPhaseCorrection" -Value 172800
+                                                   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Config" -Name "MaxPosPhaseCorrection" -Value 172800
+                                                   Restart-Service W32Time
+                                                   w32tm /resync; ScriptDescription=; ScriptGuidance=; ScriptSource=0; ScriptLanguage=0; ScriptTargetId=303144; ScriptEngineImageId=; Delay=20; ErrorAction=0; CustomErrorNotification=; Enabled=True; NotificationName=; ScriptEnginePackagesJson=; RepeatScriptUntilTrue=False; RepeatScriptIntervalSeconds=60; RepeatScriptTimeoutMinutes=10; MaxRetries=0; CopilotPromptJson=}}
+InheritTags                                      : True
+QuickTagsJson                                    : {}
+CustomTagsJson                                   : {}
+InheritStorageSettings                           : False
+DatacenterAvailability                           : {130, 8}
+StorageLoadingPriority                           : 20
+LabHostTagsJson                                  : {}
+LabFabricBuildSequence                           : 0
+ThemeId                                          : 
+EnableDisplayDelay                               : False
+DisplayDelayValue                                : 
+DisplayDelayUnit                                 : 
+DisplayDelayMessage                              : 
+IntroductionContentUrl                           : 
+PreventIntroSkipping                             : False
+IntroductionContentMinimumDisplaySeconds         : 30
+EndUrl                                           : 
+ShowMaxActiveLabInstances                        : False
+MaxActiveLabInstances                            : 
+MaxAllowedBuildMinutes                           : 60
+MaxAllowedBuildTimeAction                        : 10
+ShowInstructionsWhileBuilding                    : False
+ShowTimer                                        : True
+EnableNavigationWarning                          : True
+ShowNavigationPane                               : True
+NavigationBarWidth                               : 400
+UseIntegratedBrowser                             : False
+IntegratedBrowserContainerImageId                : 
+IntegratedBrowserContainerImageName              : 
+ShowContentTab                                   : True
+ShowMachinesTab                                  : True
+ShowSupportTab                                   : True
+UseCustomContentTabLabel                         : False
+CustomContentTabLabel                            : 
+UseCustomMachinesTabLabel                        : False
+CustomMachinesTabLabel                           : 
+UseCustomSupportTabLabel                         : False
+CustomSupportTabLabel                            : 
+EnableCopyPaste                                  : True
+ShowVirtualMachinePowerOptions                   : True
+EnableInstanceLinkSharing                        : False
+AllowLabInstanceNaming                           : False
+AllowMultipleActiveInstancesPerUser              : False
+EnableScheduledDisablement                       : False
+ScheduledDisableDate                             : 
+ScheduledDisableTime                             : 
+PublishToOrganizationTemplateGallery             : False
+TemplateGalleryReuseContainersAndVirtualMachines : False
+TemplateGalleryLicenseAgreementId                : 
+EnableVirtualMachineInstanceEditing              : False
+EnableVncRecordingFeature                        : True
+SharedClassEnvironmentRole                       : 0
+AutoStartSharedClassEnvironment                  : False
+ClassEnvironmentLabProfileId                     : 
+AllowCancel                                      : True
+AllowSave                                        : False
+AllowDisconnect                                  : False
+EnableAutoSave                                   : False
+EnableLastConsoleSyncTimeout                     : True
+LastConsoleSyncTimeoutMinutes                    : 480
+EnableLastActivityTimeout                        : True
+LastActivityTimeoutMinutes                       : 480
+MinimumAutoSaveTimeInvestment                    : 5
+MaxSnapshots                                     : 0
+ExternalInstruction.Enabled                      : False
+LtiOutcomeScoringPolicy                          : 0
+LtiOutcomeScoringFormat                          : 0
+LtiOutcomePassingScoreMinutes                    : 15
+LtiOutcomePassingScoreTaskCompletePercentage     : 70
+AllowAnonymousLaunch                             : False
+AnonymousLaunchCode                              : 
+AnonymousLaunchExpiresChecked                    : False
+AnonymousLaunchExpiresDate                       : 
+AnonymousLaunchExpiresTime                       : 
+AllowAnonymousSave                               : False
+AnonymousSaveMaxDays                             : 7
+AnonymousSaveMaxSessions                         : 5
+AuthenticatedLaunchLinksJson                     : {}
+CloudCredentialPoolAssignmentsJson               : {}
+ResourcesJson                                    : {}
+
+
+
